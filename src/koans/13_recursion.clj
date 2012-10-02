@@ -1,20 +1,28 @@
 (defn is-even? [n]
   (if (= n 0)
-    __
-    (___ (is-even? (dec n)))))
+    true
+    (not (is-even? (dec n))))) ; Why is recur a necessary statement?
 
 (defn is-even-bigint? [n]
   (loop [n   n
          acc true]
     (if (= n 0)
-      __
+      false
       (recur (dec n) (not acc)))))
 
 (defn recursive-reverse [coll]
-  __)
+  (loop [c coll
+         r []]
+    (if (= (count c) 0)
+      r
+      (recur (rest c) (cons (first c) r)))))
 
 (defn factorial [n]
-  __)
+  (loop [n n
+         r 1]
+    (if (<= n 1)
+      r
+      (recur (dec n) (* n r)))))
 
 (meditations
   "Recursion ends with a base case"
